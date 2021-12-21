@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "dingblog"
+  "defaultProject": "dingblog",
+  "cli": {
+    "analytics": "93fe3ccf-adc9-4b18-a856-9e4d9421b046"
+  }
 }
