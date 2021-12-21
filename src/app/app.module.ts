@@ -7,6 +7,10 @@ import { BlogWriteComponent } from './blog-write/blog-write.component';
 import { BlogReadComponent } from './blog-read/blog-read.component';
 import { LoginComponent } from './login/login.component';
 import { SubmitBtnComponent } from './shared/submit-btn/submit-btn.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import { SubmitBtnComponent } from './shared/submit-btn/submit-btn.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
