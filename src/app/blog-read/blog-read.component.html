@@ -1,1 +1,7 @@
-<p>blog-read works!</p>
+<div *ngIf="afAuth.authState | async as user" class="logout">
+    <p>
+        Logged in as <strong>{{ user.email }}</strong>
+    </p>
+
+    <button mat-raised-button color="accent" (click)="afAuth.signOut()">Logout</button>
+</div>

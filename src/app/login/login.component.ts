@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +11,26 @@ export class LoginComponent implements OnInit {
   userEmail = '';
   userPassword = '';
 
-  constructor() { }
+  currentUser = this.afAuth.currentUser
+
+  constructor(
+    public authService: AuthService,
+    public afAuth: AngularFireAuth
+    ) { }
 
   ngOnInit(): void {
   }
 
-  onKey(type: string, value: string){
+  onKey(type: string, value: string) {
     if (type == 'email') {
       this.userEmail = value
     } else {
       this.userPassword = value
     }
+  }
+
+  onClick() {
+    this.authService.printUser()
   }
 
 }

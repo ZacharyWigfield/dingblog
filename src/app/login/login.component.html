@@ -6,4 +6,13 @@
     <input #password name="password" id="password" (keyup)="onKey('password', password.value)"> 
     <br>
     <app-submit-btn [email]="userEmail" [password]="userPassword"></app-submit-btn>
+    <button (click)="onClick()">USER</button>
+    <br>
+    <div *ngIf="afAuth.authState | async as user" class="logout">
+        <p>
+            Logged in as <strong>{{ user.email }}</strong>
+        </p>
+    
+        <button mat-raised-button color="accent" (click)="afAuth.signOut()">Logout</button>
+    </div>
 </div>

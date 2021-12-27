@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/services/auth.service'
 
 @Component({
   selector: 'app-submit-btn',
@@ -10,7 +11,10 @@ export class SubmitBtnComponent implements OnInit {
   @Input() email = '';
   @Input() password = '';
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(
+    private afAuth: AngularFireAuth,
+    public authService: AuthService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -19,15 +23,9 @@ export class SubmitBtnComponent implements OnInit {
 
   }
 
-  async onSubmit(){
-    console.log(this.email + ' ' + this.password);
-
-    try {
-      await this.afAuth.signInWithEmailAndPassword(this.email, this.password)
-    }
-    catch (err) {
-      console.log(err);
-    }
+  async onSubmit() {
+    this.authService.login(this.email, this.password)
+    
   }
 
 }
