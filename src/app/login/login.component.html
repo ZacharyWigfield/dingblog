@@ -1,9 +1,9 @@
 <div>
     <label for="username">Username:</label>
-    <input name="username" id="username">
+    <input #email name="username" id="username" (keyup)="onKey('email', email.value)">
     <br>
     <label for="password">Password:</label>
-    <input name="password" id="passwrod">
+    <input #password name="password" id="password" (keyup)="onKey('password', password.value)"> 
     <br>
-    <app-submit-btn></app-submit-btn>
+    <app-submit-btn [email]="userEmail" [password]="userPassword"></app-submit-btn>
 </div>
